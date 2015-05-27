@@ -12,4 +12,20 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+import os
+import sys
+
 from namespace import Namespace
+
+print sys.path
+RIDE_INSTALLATION_PATH = os.path.normpath(
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+ROBOT_LIBRARIES_PATH = os.path.join(
+    RIDE_INSTALLATION_PATH, 'lib', 'robot', 'libraries')
+print ROBOT_LIBRARIES_PATH, RIDE_INSTALLATION_PATH
+if ROBOT_LIBRARIES_PATH in sys.path:
+    print 'REMOVED'
+    sys.path.remove(ROBOT_LIBRARIES_PATH)
+del ROBOT_LIBRARIES_PATH
+
+
